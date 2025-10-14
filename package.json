@@ -1,0 +1,113 @@
+{
+  "name": "kls",
+  "displayName": "kls",
+  "description": "Language support for the Kemet programming language",
+  "version": "0.0.1",
+  "author": "Maysara Elshewehy (kemet-lang)",
+  "keywords": [
+    "kemet",
+    "kemet-lang",
+    "kmt",
+    "kem",
+    "language",
+    "syntax",
+    "programming"
+  ],
+  "publisher": "kemet-lang",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kemet-lang/kls"
+  },
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "kemet.integrateMaterialIcons",
+        "title": "Kemet: Integrate with Material Icon Theme"
+      },
+      {
+        "command": "kemet.removeMaterialIntegration",
+        "title": "Kemet: Remove from Material Icon Theme"
+      }
+    ],
+    "languages": [
+      {
+        "id": "kemet",
+        "aliases": [
+          "kemet",
+          "kemet"
+        ],
+        "extensions": [
+          ".k",
+          ".kemet"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/kemet-file.svg",
+          "dark": "./icons/kemet-file.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "kemet",
+        "scopeName": "source.kemet",
+        "path": "./syntaxes/kemet.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "kemet",
+      "properties": {
+        "kemet.lintOnChange": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": true,
+          "description": "Enable linting on file change (test)."
+        },
+        "kemet.path": {
+          "scope": "resource",
+          "type": "string",
+          "default": "",
+          "description": "Path to the Kemet executable (test)."
+        }
+      }
+    }
+  },
+  "activationEvents": [
+    "onLanguage:plaintext"
+  ],
+  "main": "./client/out/extension",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -b",
+    "watch": "tsc -b -w",
+    "lint": "eslint",
+    "postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
+    "test": "sh ./scripts/e2e.sh"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@stylistic/eslint-plugin": "^2.9.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20",
+    "eslint": "^9.13.0",
+    "mocha": "^10.3.0",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.0"
+  },
+  "dependencies": {
+    "@je-es/lexer": "^0.1.6",
+    "@je-es/parser": "^0.1.5",
+    "@je-es/syntax": "^0.1.8",
+    "@kemet-lang/rules": "^0.0.2",
+    "@je-es/project": "^0.0.1",
+    "@je-es/lsp": "^0.0.2"
+  }
+}
