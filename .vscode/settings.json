@@ -34,7 +34,6 @@
 		"eslint.config.mjs": true,
 		".vscode-test": true,
 		".vscode": true,
-		"vsc-extension-quickstart.md": true,
 		"tsconfig.json": true
 	},
 	"hide-files.files": [
@@ -61,7 +60,6 @@
 		"eslint.config.mjs",
 		".vscode-test",
 		".vscode",
-		"vsc-extension-quickstart.md",
 		"tsconfig.json"
 	]
 }
