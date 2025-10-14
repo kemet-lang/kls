@@ -1,7 +1,7 @@
 {
   "name": "kls",
   "displayName": "kls",
-  "description": "Language support for the Kemet programming language",
+  "description": "Kemet Language Server (KLS)",
   "version": "0.0.1",
   "author": "Maysara Elshewehy (kemet-lang)",
   "keywords": [
