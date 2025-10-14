@@ -103,11 +103,7 @@
     "typescript-eslint": "^8.26.0"
   },
   "dependencies": {
-    "@je-es/lexer": "^0.1.6",
-    "@je-es/parser": "^0.1.5",
-    "@je-es/syntax": "^0.1.8",
     "@kemet-lang/rules": "^0.0.2",
-    "@je-es/project": "^0.0.1",
     "@je-es/lsp": "^0.0.2"
   }
 }

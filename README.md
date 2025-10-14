@@ -9,9 +9,8 @@
 
 <div align="center">
     <p>
-        <img src="./assets/img/lang-desc.png" alt="Kemet-Desc" style="" width="220" />
+        <img src="./assets/img/project-desc.png" alt="Kemet-Desc" style="" width="220" />
     </p>
-    <img src="https://img.shields.io/badge/v-MVP-black"/>
     <a href="../README.md"><img src="https://img.shields.io/badge/from-kemet_lang-black"/></a>
 </div>
 
@@ -27,7 +26,7 @@
 
 <!----------------------------------- --- ----------------------------------->
 
-- ### Kemet Extention for Visual Studio Code
+- ### Kemet Language Server (KLS)
 
     > .."
 
