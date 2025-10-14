@@ -11,7 +11,7 @@
     <p>
         <img src="./assets/img/desc.png" alt="Kemet-Desc" style="" width="220" />
     </p>
-    <a href="../README.md"><img src="https://img.shields.io/badge/from-kemet_lang-black"/></a>
+    <a href="https://github.com/kemet-lang"><img src="https://img.shields.io/badge/from-kemet_lang-black"/></a>
 </div>
 
 
