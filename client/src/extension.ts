@@ -67,10 +67,10 @@
 		console.log('✅ LSP client started');
 
 		// Register commands for Material Icon Theme integration
-		console.log('📝 Registering Material Icon Theme commands...');
+		// console.log('📝 Registering Material Icon Theme commands...');
 		context.subscriptions.push(
 			vscode.commands.registerCommand('kemet.integrateMaterialIcons', async () => {
-				console.log('🔧 Manual integration command triggered');
+				// console.log('🔧 Manual integration command triggered');
 				await context.globalState.update('kemet.skipMaterialIntegration', false);
 				await integrateMaterialIconTheme(context, true);
 			})
@@ -78,7 +78,7 @@
 
 		context.subscriptions.push(
 			vscode.commands.registerCommand('kemet.removeMaterialIntegration', async () => {
-				console.log('🗑️ Remove integration command triggered');
+				// console.log('🗑️ Remove integration command triggered');
 				await removeMaterialIntegration(context);
 			})
 		);
@@ -86,12 +86,12 @@
 
 		// Check and integrate with Material Icon Theme on first activation
 		const skipIntegration = context.globalState.get('kemet.skipMaterialIntegration');
-		console.log(`🔍 Skip integration flag: ${skipIntegration}`);
+		// console.log(`🔍 Skip integration flag: ${skipIntegration}`);
 		if (!skipIntegration) {
-			console.log('🎨 Starting Material Icon Theme integration check...');
+			// console.log('🎨 Starting Material Icon Theme integration check...');
 			integrateMaterialIconTheme(context);
 		} else {
-			console.log('⏭️ Skipping Material Icon Theme integration (user preference)');
+			// console.log('⏭️ Skipping Material Icon Theme integration (user preference)');
 		}
 
 		console.log('✅ Kemet extension activated successfully!');
@@ -112,70 +112,70 @@
 
 	async function integrateMaterialIconTheme(context: ExtensionContext, force: boolean = false) {
 		try {
-			console.log('🔍 Looking for Material Icon Theme extension...');
+			// console.log('🔍 Looking for Material Icon Theme extension...');
 
 			// Find Material Icon Theme extension
 			const materialTheme = vscode.extensions.getExtension('PKief.material-icon-theme');
 
 			if (!materialTheme) {
-				console.log('❌ Material Icon Theme not found');
+				// console.log('❌ Material Icon Theme not found');
 				if (force) {
 					vscode.window.showWarningMessage('Material Icon Theme is not installed.');
 				}
 				return;
 			}
 
-			console.log('✅ Material Icon Theme found at:', materialTheme.extensionPath);
+			// console.log('✅ Material Icon Theme found at:', materialTheme.extensionPath);
 
 			const materialPath = materialTheme.extensionPath;
 			const iconsPath = path.join(materialPath, 'icons');
 			const configPath = path.join(materialPath, 'dist', 'material-icons.json');
 
-			console.log('📁 Icons path:', iconsPath);
-			console.log('📄 Config path:', configPath);
+			// console.log('📁 Icons path:', iconsPath);
+			// console.log('📄 Config path:', configPath);
 
 			// Check if already integrated
 			const kemetIconPath = path.join(iconsPath, 'kemet.svg');
-			console.log('🔍 Checking if Kemet icon exists at:', kemetIconPath);
+			// console.log('🔍 Checking if Kemet icon exists at:', kemetIconPath);
 
 			if (fs.existsSync(kemetIconPath) && !force) {
-				console.log('✅ Kemet icon already integrated with Material Icon Theme');
+				// console.log('✅ Kemet icon already integrated with Material Icon Theme');
 				return;
 			}
 
 			if (fs.existsSync(kemetIconPath)) {
-				console.log('⚠️ Icon exists but force=true, will overwrite');
+				// console.log('⚠️ Icon exists but force=true, will overwrite');
 			} else {
-				console.log('📝 Icon does not exist, will create');
+				// console.log('📝 Icon does not exist, will create');
 			}
 
 			// Ask user for permission (only if not forced)
 			if (!force) {
-				console.log('💬 Asking user for permission...');
+				// console.log('💬 Asking user for permission...');
 				const answer = await vscode.window.showInformationMessage(
 					'Would you like to add Kemet file icons to Material Icon Theme?',
 					'Yes', 'No', 'Don\'t ask again'
 				);
 
-				console.log('👤 User answer:', answer);
+				// console.log('👤 User answer:', answer);
 
 				if (answer === 'Don\'t ask again') {
-					console.log('🚫 User chose "Don\'t ask again"');
+					// console.log('🚫 User chose "Don\'t ask again"');
 					await context.globalState.update('kemet.skipMaterialIntegration', true);
 					return;
 				}
 
 				if (answer !== 'Yes') {
-					console.log('⏭️ User declined integration');
+					// console.log('⏭️ User declined integration');
 					return;
 				}
 
-				console.log('✅ User approved integration');
+				// console.log('✅ User approved integration');
 			}
 
 			// Copy Kemet icon
 			const kemetSvgSource = path.join(context.extensionPath, 'icons', 'kemet-file.svg');
-			console.log('📂 Source icon path:', kemetSvgSource);
+			// console.log('📂 Source icon path:', kemetSvgSource);
 
 			if (!fs.existsSync(kemetSvgSource)) {
 				console.error('❌ Kemet icon source not found at:', kemetSvgSource);
@@ -183,7 +183,7 @@
 				return;
 			}
 
-			console.log('✅ Source icon found');
+			// console.log('✅ Source icon found');
 
 			// Check if icons directory exists
 			if (!fs.existsSync(iconsPath)) {
@@ -195,45 +195,45 @@
 			// Copy SVG file
 			console.log('📋 Copying icon file...');
 			fs.copyFileSync(kemetSvgSource, kemetIconPath);
-			console.log('✅ Kemet icon copied to Material Icon Theme');
+			// console.log('✅ Kemet icon copied to Material Icon Theme');
 
 			// Update material-icons.json
 			if (fs.existsSync(configPath)) {
-				console.log('📝 Reading Material Icon Theme config...');
+				// console.log('📝 Reading Material Icon Theme config...');
 				const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-				console.log('✅ Config loaded');
+				// console.log('✅ Config loaded');
 
 				// Add icon definition
 				if (!config.iconDefinitions) {
-					console.log('⚠️ iconDefinitions not found, creating...');
+					// console.log('⚠️ iconDefinitions not found, creating...');
 					config.iconDefinitions = {};
 				}
 				config.iconDefinitions['kemet'] = {
 					iconPath: '../icons/kemet.svg'
 				};
-				console.log('✅ Icon definition added');
+				// console.log('✅ Icon definition added');
 
 				// Add file extensions
 				if (!config.fileExtensions) {
-					console.log('⚠️ fileExtensions not found, creating...');
+					// console.log('⚠️ fileExtensions not found, creating...');
 					config.fileExtensions = {};
 				}
 				config.fileExtensions['k'] = 'kemet';
 				config.fileExtensions['kemet'] = 'kemet';
-				console.log('✅ File extensions added');
+				// console.log('✅ File extensions added');
 
 				// Add language IDs
 				if (!config.languageIds) {
-					console.log('⚠️ languageIds not found, creating...');
+					// console.log('⚠️ languageIds not found, creating...');
 					config.languageIds = {};
 				}
 				config.languageIds['kemet'] = 'kemet';
-				console.log('✅ Language IDs added');
+				// console.log('✅ Language IDs added');
 
 				// Write updated config
-				console.log('💾 Writing updated config...');
+				// console.log('💾 Writing updated config...');
 				fs.writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');
-				console.log('✅ Material Icon Theme config updated successfully!');
+				// console.log('✅ Material Icon Theme config updated successfully!');
 
 				// Show success message
 				const reload = await vscode.window.showInformationMessage(
@@ -242,10 +242,10 @@
 				);
 
 				if (reload === 'Reload Now') {
-					console.log('🔄 Reloading window...');
+					// console.log('🔄 Reloading window...');
 					vscode.commands.executeCommand('workbench.action.reloadWindow');
 				} else {
-					console.log('⏭️ User chose to reload later');
+					// console.log('⏭️ User chose to reload later');
 				}
 			} else {
 				console.error('❌ Material Icon Theme config file not found at:', configPath);

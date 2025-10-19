@@ -42,7 +42,8 @@
         // Initialize the LSP with syntax and workspace root
         const lsp = new LSP(connection, documents, {
             syntax		: KemetSyntax,
-            rootPath	: process.cwd()
+            rootPath	: process.cwd(),
+            debug       : false,
         });
 
         // Start the server

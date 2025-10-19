@@ -185,7 +185,7 @@
         },
         {
           "name": "support.type.primitive.kemet",
-          "match": "\\b(type|err|void|bool|any|cint|cflt|null_t|und_t)\\b"
+          "match": "\\b(type|err|void|bool|any|cint|cflt|null_t|und_t|slice|char|cpoint)\\b"
         },
         {
           "name": "support.type.integer.kemet",
