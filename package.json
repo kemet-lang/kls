@@ -2,7 +2,7 @@
   "name": "kls",
   "displayName": "kls",
   "description": "Kemet Language Server (KLS)",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Maysara Elshewehy (kemet-lang)",
   "keywords": [
     "kemet",
@@ -103,7 +103,7 @@
     "typescript-eslint": "^8.26.0"
   },
   "dependencies": {
-    "@kemet-lang/rules": "^0.0.6",
-    "@je-es/lsp": "^0.0.4"
+    "@kemet-lang/rules": "^0.1.0",
+    "@je-es/lsp": "^0.0.5"
   }
 }

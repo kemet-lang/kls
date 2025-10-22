@@ -133,7 +133,7 @@
       "patterns": [
         {
           "name": "keyword.control.conditional.kemet",
-          "match": "\\b(if|else|switch|case|default)\\b"
+          "match": "\\b(if|else|match|default)\\b"
         },
         {
           "name": "keyword.control.repeat.kemet",
@@ -153,7 +153,7 @@
         },
         {
           "name": "storage.modifier.kemet",
-          "match": "\\b(pub|static|inline|mut|comptime)\\b"
+          "match": "\\b(pub|static|inline|mut|comptime|sizeof|typeof)\\b"
         },
         {
           "name": "storage.type.kemet",
@@ -166,10 +166,6 @@
         {
           "name": "keyword.operator.word.kemet",
           "match": "\\b(and|or)\\b"
-        },
-        {
-          "name": "keyword.operator.special.kemet",
-          "match": "\\b(typeof|sizeof)\\b"
         },
         {
           "name": "keyword.other.test.kemet",
