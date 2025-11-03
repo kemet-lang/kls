@@ -2,16 +2,17 @@
 <br>
 <div align="center">
     <p>
-        <img src="./assets/img/logo.png" alt="Kemet-Logo" style="" width="300" />
+        <img src="./assets/img/logo.png" alt="kls-logo" style="" height="70" />
     </p>
 </div>
 
 
 <div align="center">
     <p>
-        <img src="./assets/img/desc.png" alt="Kemet-Desc" style="" width="220" />
+        <img src="./assets/img/kls-desc.png" alt="Kemet-Desc" style="" width="250" />
     </p>
-    <a href="https://github.com/kemet-lang"><img src="https://img.shields.io/badge/from-kemet_lang-black"/></a>
+    <img src="https://img.shields.io/badge/Version-x.x.x-black"/>
+    <a href="https://github.com/kemet-lang"><img src="https://img.shields.io/badge/Built_for-@kemet--lang-black"/></a>
 </div>
 
 
@@ -39,7 +40,6 @@
 <!--------------------------------------------------------------------------->
 
 
-
 <!----------------------------------- END ----------------------------------->
 
 <br>
@@ -48,5 +48,6 @@
         <img src="https://img.shields.io/badge/by-Maysara-blue"/>
     </a>
 </div>
+
 
 <!--------------------------------------------------------------------------->
